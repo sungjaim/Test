@@ -153,21 +153,25 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--navy);outline-offse
 .copy{font:inherit;font-size:12px;color:var(--on-navy);background:transparent;border:1px solid rgba(251,236,235,.5);border-radius:999px;padding:4px 12px;cursor:pointer}
 .fine{margin:56px 0 0;font-size:12px;opacity:.6;display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
 
-/* ---------- Dress detail ---------- */
-.modal{position:fixed;inset:0;z-index:30;background:rgba(12,28,77,.45);display:flex;align-items:flex-end;justify-content:center;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
-.sheet{position:relative;width:100%;max-width:900px;max-height:94%;overflow:auto;background:var(--ice);color:var(--navy);border-radius:24px 24px 0 0;display:grid;gap:8px;padding:28px 24px calc(28px + env(safe-area-inset-bottom,0px))}
-@media(min-width:760px){.modal{align-items:center;padding:24px}.sheet{grid-template-columns:.9fr 1.1fr;gap:40px;border-radius:24px;padding:40px}}
-.sheet .arch{width:min(100%,340px);justify-self:center}
-.detail{display:grid;gap:14px;align-content:center;min-width:0}
-.detail h2{margin:0;font-family:var(--display);font-weight:400;font-size:clamp(30px,4vw,40px);line-height:1.1}
-.detail .price{margin:0;font-size:22px;font-weight:600;font-variant-numeric:tabular-nums}
+/* ---------- Dress page ---------- */
+.dress-page{display:grid;gap:28px;padding-block:8px 72px}
+@media(min-width:880px){.dress-page{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:72px;align-items:start;padding-block:16px 96px}}
+.dress-figure{margin:0;justify-self:center;width:min(100%,420px)}
+.dress-figure .arch{outline:1px solid var(--blush);outline-offset:10px}
+.detail{display:grid;gap:16px;align-content:start;min-width:0}
+@media(min-width:880px){.detail{position:sticky;top:24px;padding-top:24px}}
+.detail h1{margin:0;font-family:var(--display);font-weight:400;font-size:clamp(36px,5vw,52px);line-height:1.05}
+.detail .status{position:static;transform:none;justify-self:start;background:var(--blush-2);color:var(--navy);font-size:12px;padding:5px 12px}
+.detail .price{margin:0;font-size:24px;font-weight:600;font-variant-numeric:tabular-nums}
 .detail .price small{font-size:13px;font-weight:400;color:var(--mut)}
-.detail .status{position:static;transform:none;justify-self:start;background:var(--blush-2);color:var(--navy)}
-dl{display:grid;grid-template-columns:96px minmax(0,1fr);gap:10px 12px;margin:4px 0;padding-block:16px;border-block:1px solid var(--line)}
+dl{display:grid;grid-template-columns:96px minmax(0,1fr);gap:12px;margin:0;padding-block:18px;border-block:1px solid var(--line)}
 dt{color:var(--mut)}dd{margin:0}
 .actions{display:grid;gap:10px}
 .hint{margin:0;font-size:13px;color:var(--mut)}
-.close{position:absolute;top:14px;right:14px;z-index:2;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--paper);color:var(--navy);font-size:22px;line-height:1;cursor:pointer}
+.back{display:inline-flex;gap:6px;font-size:14px;text-decoration:none;color:var(--mut)}
+.back:hover{color:var(--navy)}
+.related{border-top:1px solid var(--line);padding-block:64px 88px}
+.related .sec-title{font-size:clamp(28px,4vw,40px)}
 
 @media (prefers-reduced-motion: reduce){*{transition:none!important}}
 </style>
@@ -287,22 +291,16 @@ dt{color:var(--mut)}dd{margin:0}
   </div>
   </section>
   </div>
-</main>
 
-<footer class="site-foot">
-  <div class="wrap">
-    <span>© LS 엘에스 · Love ur Skating</span>
-    <nav aria-label="하단 메뉴"><a href="#collection">컬렉션</a><a href="#how">대여 방법</a><a href="#contact">문의</a><a id="footIg" href="#" target="_blank" rel="noopener"></a></nav>
-  </div>
-</footer>
-
-<div class="modal" id="modal" hidden>
-  <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="mName">
-    <button class="close" id="close" type="button" aria-label="닫기">×</button>
-    <div class="arch" id="mArch"></div>
+  <div class="view" data-view="dress" hidden>
+  <section class="page-head wrap">
+    <p class="crumbs"><a href="#">홈</a> / <a href="#collection">컬렉션</a> / <span id="mCrumb"></span></p>
+  </section>
+  <section class="wrap dress-page">
+    <figure class="dress-figure"><div class="arch" id="mArch"></div></figure>
     <div class="detail">
       <span class="label" id="mNo"></span>
-      <h2 id="mName"></h2>
+      <h1 id="mName"></h1>
       <span class="status" id="mStatus"></span>
       <p class="price" id="mPrice"></p>
       <dl id="mDetails"></dl>
@@ -311,9 +309,25 @@ dt{color:var(--mut)}dd{margin:0}
         <a class="btn btn-line" id="mCall" href="#"></a>
       </div>
       <p class="hint">문의할 때 드레스 번호와 날짜를 함께 알려 주세요.</p>
+      <a class="back" href="#collection">← 컬렉션으로 돌아가기</a>
     </div>
+  </section>
+  <section class="related wrap">
+    <div class="sec-head">
+      <h2 class="sec-title">다른 드레스도 둘러보세요</h2>
+      <a class="btn btn-line btn-sm" href="#collection">전체 보기</a>
+    </div>
+    <div class="grid" id="relatedGrid"></div>
+  </section>
   </div>
-</div>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <span>© LS 엘에스 · Love ur Skating</span>
+    <nav aria-label="하단 메뉴"><a href="#collection">컬렉션</a><a href="#how">대여 방법</a><a href="#contact">문의</a><a id="footIg" href="#" target="_blank" rel="noopener"></a></nav>
+  </div>
+</footer>
 
 <script>
 const SITE={"name": "LS (엘에스)", "tagline": "Love ur Skating · 피겨 의상 대여", "phone": "010-4342-8908", "instagram": "loveurskating", "hours": "문의 가능 시간: 매일 10:00 – 21:00"};
@@ -333,7 +347,7 @@ function tint(hex,k){const n=parseInt(hex.slice(1),16),r=n>>16,g=n>>8&255,b=n&25
 function silhouette(hex){
   const light=/^#(f|e)/i.test(hex);
   return '<svg class="art" viewBox="0 0 120 160" preserveAspectRatio="xMidYMid slice" aria-hidden="true">'+
-   '<rect width="120" height="160" fill="'+tint(hex,light?.4:.86)+'"/>'+
+   '<rect width="120" height="160" fill="'+(light?"#f3e3e5":tint(hex,.86))+'"/>'+
    '<ellipse cx="60" cy="134" rx="40" ry="4" fill="#000" opacity=".06"/>'+
    '<path d="M51 30 Q53 25 56 30 L60 36 L64 30 Q67 25 69 30 L68 58 Q66 65 69 71 Q86 96 98 124 Q80 133 60 129 Q40 133 22 124 Q34 96 51 71 Q54 65 52 58 Z" fill="'+hex+'"'+(light?' stroke="#c9b9c0" stroke-width=".8"':'')+'/>'+
    '<path d="M51 71 Q60 75 69 71" fill="none" stroke="#fff" stroke-opacity=".6" stroke-width="1.4"/>'+
@@ -375,13 +389,11 @@ function openDress(d){
   if(d.status==="preparing")rows.push(["상태","세탁·정비 중이에요. 곧 대여할 수 있어요."]);
   if(d.note)rows.push(["메모",d.note]);
   $("mDetails").innerHTML=rows.map(([k,v])=>'<dt>'+k+'</dt><dd>'+esc(v)+'</dd>').join("");
-  $("modal").hidden=false;$("close").focus();
+  $("mCrumb").textContent=d.name;
+  const others=DRESSES.filter(x=>x.id!==d.id).sort((a,b)=>(a.status!=="available")-(b.status!=="available"));
+  $("relatedGrid").innerHTML=others.slice(0,4).map(cardHTML).join("");
+  document.title=d.name+" · LS 엘에스";
 }
-function closeDress(){if(!$("modal").hidden)location.hash=lastView==="home"?"":lastView;}
-$("close").onclick=closeDress;
-$("modal").addEventListener("click",e=>{if(e.target.id==="modal")closeDress();});
-document.addEventListener("keydown",e=>{if(e.key==="Escape")closeDress();});
-
 /* Contact */
 $("heroIg").href=igDM;$("mIg").href=igDM;$("topIg").href=igDM;
 $("footIg").href="https://instagram.com/"+SITE.instagram;$("footIg").textContent="@"+SITE.instagram;
@@ -402,11 +414,13 @@ $("heroNo").textContent=no(featured);$("heroName").textContent=featured.name;
 $("featuredGrid").innerHTML=DRESSES.filter(d=>d.status==="available").slice(0,4).map(cardHTML).join("");
 render();
 
-/* Pages: home, #collection, #how, #contact; a dress opens as #dress-N over the page you came from */
+/* Pages: home, #collection, #how, #contact, and one page per dress at #dress-N */
 const VIEWS=["home","collection","how","contact"];
+const BASE_TITLE=document.title;
 let lastView=null;
 function showView(v){
-  if(v===lastView)return;
+  if(v!=="dress")document.title=BASE_TITLE;
+  if(v===lastView&&v!=="dress")return;
   document.querySelectorAll("[data-view]").forEach(el=>el.hidden=el.dataset.view!==v);
   document.querySelectorAll("[data-nav]").forEach(a=>a.classList.toggle("on",a.dataset.nav===v));
   lastView=v;window.scrollTo(0,0);dispatchEvent(new Event("resize"));
@@ -414,8 +428,7 @@ function showView(v){
 function route(){
   const h=location.hash.slice(1),m=h.match(/^dress-(\d+)$/);
   const d=m&&DRESSES.find(x=>x.id==m[1]);
-  if(d){showView(lastView||"collection");openDress(d);return;}
-  $("modal").hidden=true;
+  if(d){openDress(d);lastView=null;showView("dress");return;}
   showView(VIEWS.includes(h)?h:"home");
 }
 addEventListener("hashchange",route);route();
