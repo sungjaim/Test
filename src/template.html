@@ -7,15 +7,15 @@
 /* Layout: fashion-house lookbook. Full-bleed hot-pink hero with rink markings + sparkle,
    then a white lookbook grid of dresses, a three-step "how to rent", and a pink footer. */
 :root{
-  --hot:#ff2e88;        /* brand: bright pink */
-  --hot-deep:#d6006b;   /* buttons & links (white text passes contrast) */
+  --hot:#ffe1ec;        /* brand: soft light pink */
+  --hot-deep:#d13f7f;   /* buttons, headings (white text passes contrast) */
   --blush:#fff0f6;      /* soft pink surfaces */
   --ink:#2a0d1c;        /* text */
   --mut:#7d5a6b;        /* secondary text */
   --line:#f6d3e2;
   --bg:#ffffff;
   --card:#ffffff;
-  --on-hot:#ffffff;
+  --on-hot:#3a1428;
   --navy:#0f3186;       /* from the logo, used sparingly */
   --ok:#14a06a;--no:#e2335f;--wait:#e09a1b;
   --display:"Bodoni Moda","Didot","Bodoni 72",Georgia,serif;
@@ -23,9 +23,9 @@
   --body:"Noto Sans KR",-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --hot-deep:#ff4f9c;--blush:#2a1220;--ink:#fde8f1;--mut:#d3a8bc;--line:#4a2337;--bg:#170a11;--card:#21101a;--on-hot:#ffffff;color-scheme:dark}}
+  --hot-deep:#ff4f9c;--blush:#2a1220;--ink:#fde8f1;--mut:#d3a8bc;--line:#4a2337;--bg:#170a11;--card:#21101a;--on-hot:#3a1428;color-scheme:dark}}
 :root[data-theme="dark"]{
-  --hot-deep:#ff4f9c;--blush:#2a1220;--ink:#fde8f1;--mut:#d3a8bc;--line:#4a2337;--bg:#170a11;--card:#21101a;--on-hot:#ffffff;color-scheme:dark}
+  --hot-deep:#ff4f9c;--blush:#2a1220;--ink:#fde8f1;--mut:#d3a8bc;--line:#4a2337;--bg:#170a11;--card:#21101a;--on-hot:#3a1428;color-scheme:dark}
 
 *{box-sizing:border-box}
 [hidden]{display:none!important}
@@ -37,25 +37,25 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--navy);outline-offse
 
 /* ---------- Hero ---------- */
 .hero{position:relative;overflow:hidden;background:var(--hot);color:var(--on-hot);
-  background-image:radial-gradient(120% 80% at 85% 0%,#ff6aa9 0%,rgba(255,106,169,0) 60%),radial-gradient(90% 70% at 0% 100%,#ff0f72 0%,rgba(255,15,114,0) 60%)}
+  background-image:radial-gradient(120% 80% at 85% 0%,#fff7fa 0%,rgba(255,247,250,0) 60%),radial-gradient(90% 70% at 0% 100%,#ffcfe0 0%,rgba(255,207,224,0) 60%)}
 .rink,.sparkle{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
-.rink{opacity:.22}
+.rink{opacity:.16}
 .nav{position:relative;display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:18px}
 .brand{display:flex;align-items:center;gap:12px;text-decoration:none}
 .brand img{width:46px;height:46px;border-radius:50%;box-shadow:0 0 0 3px rgba(255,255,255,.7)}
 .brand span{font-family:var(--display);font-style:italic;font-size:20px;letter-spacing:.01em}
-.nav-link{font-size:14px;font-weight:500;text-decoration:none;border:1px solid rgba(255,255,255,.7);padding:8px 16px;border-radius:999px}
-.nav-link:hover{background:#fff;color:var(--hot-deep)}
+.nav-link{font-size:14px;font-weight:500;text-decoration:none;border:1px solid var(--hot-deep);color:var(--hot-deep);padding:8px 16px;border-radius:999px}
+.nav-link:hover{background:var(--hot-deep);color:#fff}
 .hero-body{position:relative;padding-block:56px 76px;display:grid;gap:22px;max-width:760px}
-.eyebrow{font-size:12px;font-weight:700;letter-spacing:.24em;text-transform:uppercase}
-.hero h1{margin:0;font-family:var(--display);font-weight:400;font-style:italic;line-height:.92;font-size:clamp(64px,15vw,150px);letter-spacing:-.02em}
+.eyebrow{color:var(--hot-deep);font-size:12px;font-weight:700;letter-spacing:.24em;text-transform:uppercase}
+.hero h1{margin:0;color:var(--hot-deep);font-family:var(--display);font-weight:400;font-style:italic;line-height:.92;font-size:clamp(64px,15vw,150px);letter-spacing:-.02em}
 .hero h1 b{display:block;font-style:normal;font-weight:600;padding-left:.55em}
 .lede{margin:0;font-family:var(--kr-display);font-weight:700;font-size:clamp(18px,2.6vw,22px);line-height:1.6;max-width:30em;text-wrap:balance}
 .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:6px}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font:inherit;font-weight:700;font-size:15px;padding:14px 24px;border-radius:999px;text-decoration:none;cursor:pointer;border:2px solid transparent;transition:transform .15s ease}
 .btn:hover{transform:translateY(-2px)}
-.btn-white{background:#fff;color:#d6006b}
-.btn-line{border-color:#fff;color:#fff;background:transparent}
+.btn-white{background:var(--hot-deep);color:#fff}
+.btn-line{border-color:var(--hot-deep);color:var(--hot-deep);background:rgba(255,255,255,.6)}
 .btn-hot{background:var(--hot-deep);color:#fff}
 .btn-ghost{border-color:var(--hot-deep);color:var(--hot-deep);background:transparent}
 .preview-note{font-size:12px;opacity:.9;margin:0}
@@ -67,8 +67,8 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--navy);outline-offse
 .sec-sub{margin:6px 0 0;font-family:var(--kr-display);font-weight:700;font-size:16px;color:var(--mut)}
 .filters{display:flex;flex-wrap:wrap;gap:8px}
 .chip{font:inherit;font-size:14px;font-weight:500;padding:9px 16px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
-.chip:hover{border-color:var(--hot)}
-.chip.on{background:var(--hot);border-color:var(--hot);color:#fff}
+.chip:hover{border-color:var(--hot-deep)}
+.chip.on{background:var(--hot-deep);border-color:var(--hot-deep);color:#fff}
 .count{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--mut);margin:0 0 18px}
 .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 16px}
 @media(min-width:760px){.grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:40px 28px}}
@@ -90,22 +90,22 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--navy);outline-offse
 .how{background:var(--blush);padding-block:72px}
 .steps{list-style:none;margin:32px 0 0;padding:0;display:grid;gap:28px}
 @media(min-width:760px){.steps{grid-template-columns:repeat(3,minmax(0,1fr));gap:40px}}
-.steps li{display:grid;gap:8px;border-top:1px solid var(--hot);padding-top:18px}
+.steps li{display:grid;gap:8px;border-top:1px solid var(--hot-deep);padding-top:18px}
 .steps .n{font-family:var(--display);font-style:italic;font-size:44px;line-height:1;color:var(--hot-deep)}
 .steps h3{margin:0;font-size:17px}
 .steps p{margin:0;color:var(--mut);font-size:15px;max-width:28em}
 
 /* ---------- Footer ---------- */
-footer{background:var(--hot);color:#fff;padding-block:56px 40px;position:relative;overflow:hidden}
+footer{background:var(--hot);color:var(--on-hot);padding-block:56px 40px;position:relative;overflow:hidden}
 .foot{display:grid;gap:32px}
 @media(min-width:760px){.foot{grid-template-columns:1.3fr 1fr;align-items:end}}
-.foot-title{margin:0;font-family:var(--display);font-style:italic;font-size:clamp(44px,8vw,80px);line-height:1}
+.foot-title{margin:0;color:var(--hot-deep);font-family:var(--display);font-style:italic;font-size:clamp(44px,8vw,80px);line-height:1}
 .foot p{margin:0}
 .contact{display:grid;gap:10px;font-size:15px}
 .contact .row{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
 .contact .k{font-size:11px;letter-spacing:.2em;text-transform:uppercase;opacity:.85;min-width:84px}
 .contact .v{font-weight:700;font-size:18px;font-variant-numeric:tabular-nums;text-decoration:none;user-select:all}
-.copy{font:inherit;font-size:12px;font-weight:700;color:#fff;background:transparent;border:1px solid rgba(255,255,255,.7);border-radius:999px;padding:4px 10px;cursor:pointer}
+.copy{font:inherit;font-size:12px;font-weight:700;color:var(--hot-deep);background:transparent;border:1px solid var(--hot-deep);border-radius:999px;padding:4px 10px;cursor:pointer}
 .small{font-size:12px;opacity:.85;margin-top:36px!important}
 
 /* ---------- Dress detail ---------- */
@@ -130,11 +130,11 @@ dt{color:var(--mut)}dd{margin:0;font-weight:500}
 
 <header class="hero">
   <svg class="rink" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-    <g fill="none" stroke="#fff" stroke-width="2">
+    <g fill="none" stroke="#d13f7f" stroke-width="2">
       <rect x="-40" y="40" width="1280" height="620" rx="260"></rect>
       <line x1="600" y1="40" x2="600" y2="660"></line>
       <circle cx="600" cy="350" r="150"></circle>
-      <circle cx="600" cy="350" r="6" fill="#fff"></circle>
+      <circle cx="600" cy="350" r="6" fill="#d13f7f"></circle>
       <circle cx="200" cy="200" r="90"></circle>
       <circle cx="1000" cy="500" r="90"></circle>
       <line x1="360" y1="40" x2="360" y2="660" stroke-dasharray="10 10"></line>
@@ -304,8 +304,8 @@ render();
   const still=matchMedia("(prefers-reduced-motion: reduce)").matches;
   let W,H,pts=[];
   function size(){const r=c.getBoundingClientRect(),dpr=Math.min(devicePixelRatio||1,2);W=r.width;H=r.height;c.width=W*dpr;c.height=H*dpr;x.setTransform(dpr,0,0,dpr,0,0);
-    pts=Array.from({length:Math.round(W*H/9000)},()=>({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.6+.4,p:Math.random()*6.28,s:Math.random()*.02+.006}));}
-  function star(p,a){x.globalAlpha=a;x.fillStyle="#fff";x.beginPath();x.arc(p.x,p.y,p.r,0,6.28);x.fill();
+    pts=Array.from({length:Math.round(W*H/9000)},()=>({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.6+.4,p:Math.random()*6.28,s:Math.random()*.02+.006,c:Math.random()<.45?"#e86b9f":"#ffffff"}));}
+  function star(p,a){x.globalAlpha=a;x.fillStyle=p.c;x.beginPath();x.arc(p.x,p.y,p.r,0,6.28);x.fill();
     if(p.r>1.5){x.globalAlpha=a*.6;x.fillRect(p.x-p.r*3,p.y-.3,p.r*6,.6);x.fillRect(p.x-.3,p.y-p.r*3,.6,p.r*6);}}
   function frame(){x.clearRect(0,0,W,H);pts.forEach(p=>{p.p+=p.s;star(p,.25+.55*(.5+.5*Math.sin(p.p)));});if(!still)requestAnimationFrame(frame);}
   size();addEventListener("resize",size);frame();
