@@ -41,10 +41,26 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--navy);outline-offse
 .brand img{width:44px;height:44px;border-radius:50%;background:#fff}
 .brand b{display:block;font-family:var(--display);font-weight:400;font-size:19px;letter-spacing:.04em;line-height:1.1}
 .brand small{display:block;font-size:11px;color:var(--mut);letter-spacing:.08em}
+.top{flex-wrap:wrap}
 .menu{display:flex;align-items:center;gap:28px;font-size:14px}
+.menu a.on{font-weight:600;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:6px}
+.top-cta{order:2}
+@media(max-width:720px){.menu{order:3;width:100%;justify-content:space-between;gap:8px;border-top:1px solid var(--line);padding-top:12px}}
+.view{animation:fade .35s ease}
+@keyframes fade{from{opacity:.4}to{opacity:1}}
+.page-head{padding-block:48px 8px}
+.page-head .sec-title{font-size:clamp(44px,7vw,72px)}
+.more{display:flex;justify-content:center;margin-top:48px}
+.featured{padding-block:88px 96px}
+.crumbs{font-size:13px;color:var(--mut);margin:0 0 6px}
+.crumbs a{text-decoration:none}.crumbs a:hover{text-decoration:underline}
+.site-foot{border-top:1px solid var(--line);padding-block:28px;font-size:13px;color:var(--mut)}
+.site-foot .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 24px}
+.site-foot a{text-decoration:none}.site-foot a:hover{text-decoration:underline}
+.site-foot nav{display:flex;flex-wrap:wrap;gap:6px 18px}
 .menu a{text-decoration:none}
 .menu a:not(.btn):hover{text-decoration:underline;text-underline-offset:5px}
-@media(max-width:720px){.menu .hide-m{display:none}}
+
 
 /* ---------- Buttons ---------- */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font:inherit;font-weight:600;font-size:14px;letter-spacing:.02em;padding:13px 26px;border-radius:999px;text-decoration:none;cursor:pointer;border:1px solid var(--navy);transition:background .2s,color .2s}
@@ -81,7 +97,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--navy);outline-offse
 .facts span{font-size:12px;color:var(--mut)}
 
 /* ---------- Collection ---------- */
-.collection{padding-block:88px 56px}
+.collection{padding-block:32px 96px}
 .sec-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:20px 32px;margin-bottom:36px}
 .sec-title{margin:6px 0 0;font-family:var(--display);font-weight:400;font-size:clamp(38px,6vw,60px);line-height:1}
 .sec-kr{margin:8px 0 0;font-family:var(--kr-serif);color:var(--mut)}
@@ -107,7 +123,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--navy);outline-offse
 .empty{color:var(--mut)}
 
 /* ---------- How to rent ---------- */
-.how{background:var(--blush-2);padding-block:88px}
+.how{background:var(--blush-2);padding-block:56px 96px;margin-top:32px}
 .steps{list-style:none;margin:40px 0 0;padding:0;display:grid;gap:32px}
 @media(min-width:760px){.steps{grid-template-columns:repeat(3,minmax(0,1fr));gap:48px}}
 .steps li{display:grid;gap:10px;border-top:1px solid var(--navy);padding-top:20px;min-width:0}
@@ -116,7 +132,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--navy);outline-offse
 .steps p{margin:0;color:var(--mut);max-width:28em}
 
 /* ---------- Contact ---------- */
-.contact{background:var(--navy-2);color:var(--on-navy);padding-block:88px 40px}
+.contact{background:var(--navy-2);color:var(--on-navy);padding-block:72px 64px;margin-top:32px}
 .contact-grid{display:grid;gap:40px}
 @media(min-width:880px){.contact-grid{grid-template-columns:1fr 1fr;align-items:end}}
 .contact h2{margin:0;font-family:var(--display);font-weight:400;font-size:clamp(44px,7vw,80px);line-height:1}
@@ -153,13 +169,18 @@ dt{color:var(--mut)}dd{margin:0}
 <div class="wrap">
   <header class="top">
     <a class="brand" href="#"><img src="__LOGO__" alt="LS 로고"><span><b>LS · 엘에스</b><small>Love ur Skating</small></span></a>
-    <nav class="menu">
-      <a class="hide-m" href="#collection">컬렉션</a>
-      <a class="hide-m" href="#how">대여 방법</a>
-      <a class="btn btn-line btn-sm" href="#contact">예약 문의</a>
+    <nav class="menu" aria-label="메뉴">
+      <a href="#" data-nav="home">홈</a>
+      <a href="#collection" data-nav="collection">컬렉션</a>
+      <a href="#how" data-nav="how">대여 방법</a>
+      <a href="#contact" data-nav="contact">문의</a>
     </nav>
+    <a class="btn btn-solid btn-sm top-cta" id="topIg" href="#" target="_blank" rel="noopener">DM 예약</a>
   </header>
+</div>
 
+<div class="view" data-view="home">
+<div class="wrap">
   <section class="hero">
     <div class="hero-copy">
       <span class="label">Figure Skating Costume Rental</span>
@@ -188,34 +209,60 @@ dt{color:var(--mut)}dd{margin:0}
   </div>
 </section>
 
+<section class="featured wrap">
+  <div class="sec-head">
+    <div>
+      <span class="label">Available now</span>
+      <h2 class="sec-title">지금 대여 가능한 드레스</h2>
+    </div>
+    <a class="btn btn-line btn-sm" href="#collection">전체 컬렉션 보기 →</a>
+  </div>
+  <div class="grid" id="featuredGrid"></div>
+  <div class="more"><a class="btn btn-solid" href="#collection">드레스 전체 보기</a></div>
+</section>
+</div>
+
 <main>
-  <section class="collection wrap" id="collection">
+  <div class="view" data-view="collection" hidden>
+  <section class="page-head wrap">
+    <p class="crumbs"><a href="#">홈</a> / 컬렉션</p>
+    <h1 class="sec-title">The Dresses</h1>
+    <p class="sec-kr">드레스를 누르면 사이즈와 대여 가능일을 볼 수 있어요.</p>
+  </section>
+  <section class="collection wrap">
     <div class="sec-head">
-      <div>
-        <span class="label">Collection</span>
-        <h2 class="sec-title">The Dresses</h2>
-        <p class="sec-kr">드레스를 누르면 사이즈와 대여 가능일을 볼 수 있어요.</p>
-      </div>
       <div class="tabs" id="tabs" role="group" aria-label="대여 상태"></div>
     </div>
     <div class="grid" id="grid"></div>
     <p class="empty" id="empty" hidden>이 상태의 드레스가 지금은 없어요.</p>
   </section>
+  </div>
 
-  <section class="how" id="how">
+  <div class="view" data-view="how" hidden>
+  <section class="page-head wrap">
+    <p class="crumbs"><a href="#">홈</a> / 대여 방법</p>
+    <h1 class="sec-title">How to rent</h1>
+    <p class="sec-kr">세 단계면 대여가 끝나요.</p>
+  </section>
+  <section class="how">
     <div class="wrap">
-      <span class="label">How to rent</span>
-      <h2 class="sec-title">대여 방법</h2>
       <ol class="steps">
         <li><span class="n">01</span><h3>드레스 고르기</h3><p>컬렉션에서 마음에 드는 드레스를 고르고 사이즈와 대여 가능 여부를 확인하세요.</p></li>
         <li><span class="n">02</span><h3>날짜와 함께 문의</h3><p>인스타그램 DM이나 전화로 드레스 이름과 대회·공연 날짜를 알려 주세요.</p></li>
         <li><span class="n">03</span><h3>수령하고 반납하기</h3><p>예약이 확정되면 수령과 반납 방법을 안내해 드려요.</p></li>
       </ol>
+      <div class="more"><a class="btn btn-solid" href="#collection">드레스 고르러 가기</a></div>
     </div>
   </section>
-</main>
+  </div>
 
-<footer class="contact" id="contact">
+  <div class="view" data-view="contact" hidden>
+  <section class="page-head wrap">
+    <p class="crumbs"><a href="#">홈</a> / 문의</p>
+    <h1 class="sec-title">Contact</h1>
+    <p class="sec-kr">예약과 궁금한 점은 인스타그램 DM이나 전화로 편하게 물어보세요.</p>
+  </section>
+  <section class="contact">
   <div class="wrap">
     <div class="contact-grid">
       <div>
@@ -228,7 +275,15 @@ dt{color:var(--mut)}dd{margin:0}
         <div class="line"><span class="k">Hours</span><span id="hours"></span></div>
       </div>
     </div>
-    <p class="fine"><span>© LS 엘에스 · Love ur Skating</span><span>Figure skating costume rental</span></p>
+  </div>
+  </section>
+  </div>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <span>© LS 엘에스 · Love ur Skating</span>
+    <nav aria-label="하단 메뉴"><a href="#collection">컬렉션</a><a href="#how">대여 방법</a><a href="#contact">문의</a><a id="footIg" href="#" target="_blank" rel="noopener"></a></nav>
   </div>
 </footer>
 
@@ -279,17 +334,18 @@ function silhouette(hex){
 function art(d){return d.image?'<img class="art" src="'+esc(d.image)+'" alt="'+esc(d.name)+'" loading="lazy" style="object-fit:cover">':silhouette(d.colorHex||"#f2c6cc");}
 
 /* Collection */
-function render(){
-  const list=DRESSES.filter(d=>!current||d.status===current);
-  $("grid").innerHTML=list.map(d=>
+function cardHTML(d){return (
     '<button class="card" type="button" data-id="'+d.id+'">'+
       '<div class="arch">'+art(d)+'<span class="status s-'+d.status+'">'+STATUS[d.status]+'</span></div>'+
       '<div class="tag"><span class="no">'+no(d)+'</span><h3>'+esc(d.name)+'</h3>'+
       '<div class="row"><span>Size '+esc(d.size)+' · '+esc(d.color)+'</span><b>'+won(d.price)+'</b></div></div>'+
-    '</button>').join("");
+    '</button>');}
+function render(){
+  const list=DRESSES.filter(d=>!current||d.status===current);
+  $("grid").innerHTML=list.map(cardHTML).join("");
   $("empty").hidden=list.length>0;
 }
-$("grid").addEventListener("click",e=>{const c=e.target.closest(".card");if(c)openDress(DRESSES.find(d=>d.id==c.dataset.id));});
+document.addEventListener("click",e=>{const c=e.target.closest(".card");if(c)location.hash="dress-"+c.dataset.id;});
 [["","전체"],...Object.entries(STATUS)].forEach(([v,l])=>{
   const n=DRESSES.filter(d=>!v||d.status===v).length;
   const b=document.createElement("button");b.type="button";b.className="tab"+(v?"":" on");
@@ -312,13 +368,14 @@ function openDress(d){
   $("mDetails").innerHTML=rows.map(([k,v])=>'<dt>'+k+'</dt><dd>'+esc(v)+'</dd>').join("");
   $("modal").hidden=false;$("close").focus();
 }
-function closeDress(){$("modal").hidden=true;}
+function closeDress(){if(!$("modal").hidden)location.hash=lastView==="home"?"":lastView;}
 $("close").onclick=closeDress;
 $("modal").addEventListener("click",e=>{if(e.target.id==="modal")closeDress();});
 document.addEventListener("keydown",e=>{if(e.key==="Escape")closeDress();});
 
 /* Contact */
-$("heroIg").href=igDM;$("mIg").href=igDM;
+$("heroIg").href=igDM;$("mIg").href=igDM;$("topIg").href=igDM;
+$("footIg").href="https://instagram.com/"+SITE.instagram;$("footIg").textContent="@"+SITE.instagram;
 $("ig").href="https://instagram.com/"+SITE.instagram;$("ig").textContent="@"+SITE.instagram;
 $("tel").href=tel;$("tel").textContent=SITE.phone;
 $("mCall").href=tel;$("mCall").textContent="전화 문의 · "+SITE.phone;
@@ -333,7 +390,26 @@ $("copyTel").onclick=async()=>{
 const featured=DRESSES.find(d=>d.status==="available")||DRESSES[0];
 $("heroArch").insertAdjacentHTML("afterbegin",art(featured));
 $("heroNo").textContent=no(featured);$("heroName").textContent=featured.name;
+$("featuredGrid").innerHTML=DRESSES.filter(d=>d.status==="available").slice(0,4).map(cardHTML).join("");
 render();
+
+/* Pages: home, #collection, #how, #contact; a dress opens as #dress-N over the page you came from */
+const VIEWS=["home","collection","how","contact"];
+let lastView=null;
+function showView(v){
+  if(v===lastView)return;
+  document.querySelectorAll("[data-view]").forEach(el=>el.hidden=el.dataset.view!==v);
+  document.querySelectorAll("[data-nav]").forEach(a=>a.classList.toggle("on",a.dataset.nav===v));
+  lastView=v;window.scrollTo(0,0);dispatchEvent(new Event("resize"));
+}
+function route(){
+  const h=location.hash.slice(1),m=h.match(/^dress-(\d+)$/);
+  const d=m&&DRESSES.find(x=>x.id==m[1]);
+  if(d){showView(lastView||"collection");openDress(d);return;}
+  $("modal").hidden=true;
+  showView(VIEWS.includes(h)?h:"home");
+}
+addEventListener("hashchange",route);route();
 (function(){
   const c=$("sparkle"),x=c.getContext("2d");
   const still=matchMedia("(prefers-reduced-motion: reduce)").matches;
