@@ -1,0 +1,313 @@
+<title>LS 엘에스 피겨 의상 대여</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,600;1,6..96,400;1,6..96,600&family=Nanum+Myeongjo:wght@700;800&family=Noto+Sans+KR:wght@400;500;700&display=swap">
+<style>
+/* Layout: fashion-house lookbook. Full-bleed hot-pink hero with rink markings + sparkle,
+   then a white lookbook grid of dresses, a three-step "how to rent", and a pink footer. */
+:root{
+  --hot:#ff2e88;        /* brand: bright pink */
+  --hot-deep:#d6006b;   /* buttons & links (white text passes contrast) */
+  --blush:#fff0f6;      /* soft pink surfaces */
+  --ink:#2a0d1c;        /* text */
+  --mut:#7d5a6b;        /* secondary text */
+  --line:#f6d3e2;
+  --bg:#ffffff;
+  --card:#ffffff;
+  --on-hot:#ffffff;
+  --navy:#0f3186;       /* from the logo, used sparingly */
+  --ok:#14a06a;--no:#e2335f;--wait:#e09a1b;
+  --display:"Bodoni Moda","Didot","Bodoni 72",Georgia,serif;
+  --kr-display:"Nanum Myeongjo","AppleMyungjo","Batang",serif;
+  --body:"Noto Sans KR",-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --hot-deep:#ff4f9c;--blush:#2a1220;--ink:#fde8f1;--mut:#d3a8bc;--line:#4a2337;--bg:#170a11;--card:#21101a;--on-hot:#ffffff;color-scheme:dark}}
+:root[data-theme="dark"]{
+  --hot-deep:#ff4f9c;--blush:#2a1220;--ink:#fde8f1;--mut:#d3a8bc;--line:#4a2337;--bg:#170a11;--card:#21101a;--on-hot:#ffffff;color-scheme:dark}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.6;-webkit-font-smoothing:antialiased}
+img{max-width:100%}
+a{color:inherit}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+a:focus-visible,button:focus-visible{outline:3px solid var(--navy);outline-offset:3px}
+
+/* ---------- Hero ---------- */
+.hero{position:relative;overflow:hidden;background:var(--hot);color:var(--on-hot);
+  background-image:radial-gradient(120% 80% at 85% 0%,#ff6aa9 0%,rgba(255,106,169,0) 60%),radial-gradient(90% 70% at 0% 100%,#ff0f72 0%,rgba(255,15,114,0) 60%)}
+.rink,.sparkle{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.rink{opacity:.22}
+.nav{position:relative;display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:18px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand img{width:46px;height:46px;border-radius:50%;box-shadow:0 0 0 3px rgba(255,255,255,.7)}
+.brand span{font-family:var(--display);font-style:italic;font-size:20px;letter-spacing:.01em}
+.nav-link{font-size:14px;font-weight:500;text-decoration:none;border:1px solid rgba(255,255,255,.7);padding:8px 16px;border-radius:999px}
+.nav-link:hover{background:#fff;color:var(--hot-deep)}
+.hero-body{position:relative;padding-block:56px 76px;display:grid;gap:22px;max-width:760px}
+.eyebrow{font-size:12px;font-weight:700;letter-spacing:.24em;text-transform:uppercase}
+.hero h1{margin:0;font-family:var(--display);font-weight:400;font-style:italic;line-height:.92;font-size:clamp(64px,15vw,150px);letter-spacing:-.02em}
+.hero h1 b{display:block;font-style:normal;font-weight:600;padding-left:.55em}
+.lede{margin:0;font-family:var(--kr-display);font-weight:700;font-size:clamp(18px,2.6vw,22px);line-height:1.6;max-width:30em;text-wrap:balance}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:6px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font:inherit;font-weight:700;font-size:15px;padding:14px 24px;border-radius:999px;text-decoration:none;cursor:pointer;border:2px solid transparent;transition:transform .15s ease}
+.btn:hover{transform:translateY(-2px)}
+.btn-white{background:#fff;color:#d6006b}
+.btn-line{border-color:#fff;color:#fff;background:transparent}
+.btn-hot{background:var(--hot-deep);color:#fff}
+.btn-ghost{border-color:var(--hot-deep);color:var(--hot-deep);background:transparent}
+.preview-note{font-size:12px;opacity:.9;margin:0}
+
+/* ---------- Collection ---------- */
+.collection{padding-block:72px 40px}
+.sec-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px 24px;margin-bottom:28px}
+.sec-title{margin:0;font-family:var(--display);font-weight:400;font-style:italic;font-size:clamp(40px,7vw,64px);line-height:1;color:var(--hot-deep)}
+.sec-sub{margin:6px 0 0;font-family:var(--kr-display);font-weight:700;font-size:16px;color:var(--mut)}
+.filters{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font:inherit;font-size:14px;font-weight:500;padding:9px 16px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.chip:hover{border-color:var(--hot)}
+.chip.on{background:var(--hot);border-color:var(--hot);color:#fff}
+.count{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--mut);margin:0 0 18px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 16px}
+@media(min-width:760px){.grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:40px 28px}}
+@media(min-width:1040px){.grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.card{display:block;width:100%;text-align:left;font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+.frame{position:relative;aspect-ratio:3/4;max-width:100%;border-radius:4px;overflow:hidden;background:var(--blush)}
+.frame .art{position:absolute;inset:0;width:100%;height:100%;transition:transform .5s ease}
+.frame img.art{object-fit:cover}
+.card:hover .art{transform:scale(1.04)}
+.pill{position:absolute;top:12px;left:12px;display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.94);color:#2a0d1c;font-size:12px;font-weight:700;padding:5px 11px 5px 9px;border-radius:999px}
+.pill::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--dot)}
+.s-available{--dot:var(--ok)}.s-rented{--dot:var(--no)}.s-preparing{--dot:var(--wait)}
+.card h3{margin:14px 0 2px;font-family:var(--display);font-weight:600;font-size:19px;line-height:1.25}
+.card .spec{margin:0;font-size:13px;color:var(--mut)}
+.card .price{margin:4px 0 0;font-size:15px;font-weight:700;font-variant-numeric:tabular-nums}
+.empty{color:var(--mut)}
+
+/* ---------- How to rent ---------- */
+.how{background:var(--blush);padding-block:72px}
+.steps{list-style:none;margin:32px 0 0;padding:0;display:grid;gap:28px}
+@media(min-width:760px){.steps{grid-template-columns:repeat(3,minmax(0,1fr));gap:40px}}
+.steps li{display:grid;gap:8px;border-top:1px solid var(--hot);padding-top:18px}
+.steps .n{font-family:var(--display);font-style:italic;font-size:44px;line-height:1;color:var(--hot-deep)}
+.steps h3{margin:0;font-size:17px}
+.steps p{margin:0;color:var(--mut);font-size:15px;max-width:28em}
+
+/* ---------- Footer ---------- */
+footer{background:var(--hot);color:#fff;padding-block:56px 40px;position:relative;overflow:hidden}
+.foot{display:grid;gap:32px}
+@media(min-width:760px){.foot{grid-template-columns:1.3fr 1fr;align-items:end}}
+.foot-title{margin:0;font-family:var(--display);font-style:italic;font-size:clamp(44px,8vw,80px);line-height:1}
+.foot p{margin:0}
+.contact{display:grid;gap:10px;font-size:15px}
+.contact .row{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+.contact .k{font-size:11px;letter-spacing:.2em;text-transform:uppercase;opacity:.85;min-width:84px}
+.contact .v{font-weight:700;font-size:18px;font-variant-numeric:tabular-nums;text-decoration:none;user-select:all}
+.copy{font:inherit;font-size:12px;font-weight:700;color:#fff;background:transparent;border:1px solid rgba(255,255,255,.7);border-radius:999px;padding:4px 10px;cursor:pointer}
+.small{font-size:12px;opacity:.85;margin-top:36px!important}
+
+/* ---------- Dress detail ---------- */
+.modal{position:fixed;inset:0;z-index:30;background:rgba(42,13,28,.6);display:flex;align-items:flex-end;justify-content:center;-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
+.sheet{position:relative;width:100%;max-width:880px;max-height:94%;overflow:auto;background:var(--bg);color:var(--ink);border-radius:20px 20px 0 0;display:grid;padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(min-width:760px){.modal{align-items:center;padding:24px}.sheet{grid-template-columns:1fr 1fr;border-radius:20px}}
+.sheet .frame{border-radius:0;aspect-ratio:4/5}
+@media(max-width:759px){.sheet .frame{aspect-ratio:1/1}}
+.detail{padding:28px 24px 28px;display:grid;gap:14px;align-content:start}
+.detail h2{margin:0;font-family:var(--display);font-weight:600;font-size:32px;line-height:1.15}
+.detail .price{font-size:22px;font-weight:700;margin:0;font-variant-numeric:tabular-nums}
+.detail .price small{font-size:14px;font-weight:500;color:var(--mut)}
+dl{display:grid;grid-template-columns:96px minmax(0,1fr);gap:10px 12px;margin:6px 0;padding-block:16px;border-block:1px solid var(--line);font-size:15px}
+dt{color:var(--mut)}dd{margin:0;font-weight:500}
+.inline-pill{position:static;justify-self:start;background:var(--blush);color:var(--ink)}
+.actions{display:grid;gap:10px;margin-top:4px}
+.hint{font-size:13px;color:var(--mut);margin:0}
+.close{position:absolute;top:12px;right:12px;z-index:2;width:40px;height:40px;border-radius:50%;border:0;background:rgba(255,255,255,.95);color:#2a0d1c;font-size:24px;line-height:1;cursor:pointer;box-shadow:0 2px 10px rgba(0,0,0,.15)}
+
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+</style>
+
+<header class="hero">
+  <svg class="rink" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <g fill="none" stroke="#fff" stroke-width="2">
+      <rect x="-40" y="40" width="1280" height="620" rx="260"></rect>
+      <line x1="600" y1="40" x2="600" y2="660"></line>
+      <circle cx="600" cy="350" r="150"></circle>
+      <circle cx="600" cy="350" r="6" fill="#fff"></circle>
+      <circle cx="200" cy="200" r="90"></circle>
+      <circle cx="1000" cy="500" r="90"></circle>
+      <line x1="360" y1="40" x2="360" y2="660" stroke-dasharray="10 10"></line>
+      <line x1="840" y1="40" x2="840" y2="660" stroke-dasharray="10 10"></line>
+    </g>
+  </svg>
+  <canvas class="sparkle" id="sparkle" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <nav class="nav">
+      <a class="brand" href="#"><img src="__LOGO__" alt="LS 로고"><span>엘에스 · LS</span></a>
+      <a class="nav-link" href="#contact">문의하기</a>
+    </nav>
+    <div class="hero-body">
+      <span class="eyebrow">Figure Skating Costume Rental</span>
+      <h1>Love ur <b>Skating</b></h1>
+      <p class="lede">빙판 위의 가장 빛나는 순간을 위한 드레스.<br>시합과 갈라쇼 의상을 부담 없이 대여하세요.</p>
+      <div class="cta">
+        <a class="btn btn-white" href="#collection">드레스 보러 가기</a>
+        <a class="btn btn-line" id="heroIg" href="#" target="_blank" rel="noopener">인스타그램 문의</a>
+      </div>
+      <p class="preview-note">미리보기: 아래 드레스는 예시이며 실제 의상으로 교체될 예정입니다.</p>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="collection wrap" id="collection">
+    <div class="sec-head">
+      <div>
+        <h2 class="sec-title">The Collection</h2>
+        <p class="sec-sub">드레스 컬렉션</p>
+      </div>
+      <div class="filters" id="filters" role="group" aria-label="대여 상태"></div>
+    </div>
+    <p class="count" id="count"></p>
+    <div class="grid" id="grid"></div>
+    <p class="empty" id="empty" hidden>지금 이 조건의 드레스가 없어요. 다른 상태를 선택해 보세요.</p>
+  </section>
+
+  <section class="how">
+    <div class="wrap">
+      <h2 class="sec-title">How to rent</h2>
+      <p class="sec-sub">대여 방법</p>
+      <ol class="steps">
+        <li><span class="n">1</span><h3>드레스 고르기</h3><p>컬렉션에서 마음에 드는 드레스를 고르고 사이즈와 대여 가능 여부를 확인하세요.</p></li>
+        <li><span class="n">2</span><h3>날짜와 함께 문의</h3><p>전화나 인스타그램 DM으로 드레스 이름과 대회·공연 날짜를 알려 주세요.</p></li>
+        <li><span class="n">3</span><h3>수령하고 반납하기</h3><p>예약이 확정되면 수령과 반납 방법을 안내해 드려요.</p></li>
+      </ol>
+    </div>
+  </section>
+</main>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <p class="foot-title">Let’s get you<br>on the ice.</p>
+      </div>
+      <div class="contact">
+        <div class="row"><span class="k">Phone</span><a class="v" id="tel" href="#"></a><button class="copy" id="copyTel" type="button">복사</button></div>
+        <div class="row"><span class="k">Instagram</span><a class="v" id="ig" href="#" target="_blank" rel="noopener"></a></div>
+        <div class="row"><span class="k">Hours</span><span id="hours"></span></div>
+      </div>
+    </div>
+    <p class="small">© LS 엘에스 · Love ur Skating</p>
+  </div>
+</footer>
+
+<div class="modal" id="modal" hidden>
+  <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="mName">
+    <button class="close" id="close" type="button" aria-label="닫기">×</button>
+    <div class="frame" id="mFrame"></div>
+    <div class="detail">
+      <span class="pill inline-pill" id="mPill"></span>
+      <h2 id="mName"></h2>
+      <p class="price" id="mPrice"></p>
+      <dl id="mDetails"></dl>
+      <div class="actions">
+        <a class="btn btn-hot" id="mIg" href="#" target="_blank" rel="noopener">인스타그램 DM으로 예약 문의</a>
+        <a class="btn btn-ghost" id="mCall" href="#"></a>
+      </div>
+      <p class="hint">문의할 때 드레스 이름과 날짜를 함께 알려 주세요.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+const SITE=__SITE__;
+const DRESSES=__DRESSES__;
+const STATUS={available:"대여 가능",rented:"대여 중",preparing:"준비 중"};
+const $=id=>document.getElementById(id);
+const tel="tel:"+SITE.phone.replace(/\D/g,"");
+const igDM="https://ig.me/m/"+SITE.instagram;
+let current="";
+
+const won=n=>"₩"+n.toLocaleString("ko-KR");
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+
+/* Placeholder art until real photos arrive: a skating-dress silhouette in the dress colour. */
+function silhouette(hex){
+  const light=/^#(f|e)/i.test(hex||"");
+  const stroke=light?'stroke="#e7b9cc" stroke-width="1"':'';
+  return '<svg class="art" viewBox="0 0 120 160" preserveAspectRatio="xMidYMid slice" aria-hidden="true">'+
+   '<defs><radialGradient id="g'+hex.slice(1)+'" cx="50%" cy="35%" r="75%"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#ffe3ef"/></radialGradient></defs>'+
+   '<rect width="120" height="160" fill="url(#g'+hex.slice(1)+')"/>'+
+   '<path d="M50 30 L54 24 L60 32 L66 24 L70 30 L68 58 Q66 66 69 72 L96 124 Q60 138 24 124 L51 72 Q54 66 52 58 Z" fill="'+hex+'" '+stroke+'/>'+
+   '<path d="M51 72 Q60 76 69 72" fill="none" stroke="#fff" stroke-opacity=".55" stroke-width="1.5"/>'+
+   '<g fill="#fff" opacity=".85"><circle cx="58" cy="44" r=".9"/><circle cx="63" cy="50" r=".7"/><circle cx="56" cy="56" r=".8"/><circle cx="62" cy="62" r=".6"/><circle cx="48" cy="98" r=".8"/><circle cx="70" cy="104" r=".9"/><circle cx="60" cy="112" r=".7"/></g>'+
+   '</svg>';
+}
+function art(d){return d.image?'<img class="art" src="'+esc(d.image)+'" alt="'+esc(d.name)+'" loading="lazy">':silhouette(d.colorHex||"#ff2e88");}
+
+function render(){
+  const list=DRESSES.filter(d=>!current||d.status===current);
+  $("grid").innerHTML=list.map(d=>
+    '<button class="card" type="button" data-id="'+d.id+'">'+
+      '<div class="frame">'+art(d)+'<span class="pill s-'+d.status+'">'+STATUS[d.status]+'</span></div>'+
+      '<h3>'+esc(d.name)+'</h3>'+
+      '<p class="spec">Size '+esc(d.size)+' · '+esc(d.color)+'</p>'+
+      '<p class="price">'+won(d.price)+'</p>'+
+    '</button>').join("");
+  $("count").textContent=list.length+" Dresses";
+  $("empty").hidden=list.length>0;
+}
+$("grid").addEventListener("click",e=>{const c=e.target.closest(".card");if(c)openDress(DRESSES.find(d=>d.id==c.dataset.id));});
+
+function openDress(d){
+  $("mFrame").innerHTML=art(d);
+  const p=$("mPill");p.className="pill inline-pill s-"+d.status;p.textContent=STATUS[d.status];
+  $("mName").textContent=d.name;
+  $("mPrice").innerHTML=won(d.price)+' <small>/ 1회 대여</small>';
+  const rows=[["사이즈",d.size],["색상",d.color]];
+  if(d.status==="rented"&&d.availableFrom)rows.push(["대여 가능일",d.availableFrom+" 이후"]);
+  if(d.status==="preparing")rows.push(["상태","세탁·정비 중이에요. 곧 대여할 수 있어요."]);
+  if(d.note)rows.push(["메모",d.note]);
+  $("mDetails").innerHTML=rows.map(([k,v])=>'<dt>'+k+'</dt><dd>'+esc(v)+'</dd>').join("");
+  $("modal").hidden=false;$("close").focus();
+}
+function closeDress(){$("modal").hidden=true;}
+$("close").onclick=closeDress;
+$("modal").addEventListener("click",e=>{if(e.target.id==="modal")closeDress();});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeDress();});
+
+/* Filters */
+[["","전체"],...Object.entries(STATUS)].forEach(([v,l])=>{
+  const b=document.createElement("button");b.type="button";b.className="chip"+(v?"":" on");b.textContent=l;
+  b.onclick=()=>{current=v;document.querySelectorAll(".chip").forEach(x=>x.classList.toggle("on",x===b));render();};
+  $("filters").appendChild(b);
+});
+
+/* Contact */
+$("tel").href=tel;$("tel").textContent=SITE.phone;
+$("ig").href="https://instagram.com/"+SITE.instagram;$("ig").textContent="@"+SITE.instagram;
+$("heroIg").href=igDM;$("mIg").href=igDM;
+$("mCall").href=tel;$("mCall").textContent="전화 문의 · "+SITE.phone;
+$("hours").textContent=SITE.hours;
+$("copyTel").onclick=async()=>{
+  try{await navigator.clipboard.writeText(SITE.phone);$("copyTel").textContent="복사됨";}
+  catch(e){const r=document.createRange();r.selectNodeContents($("tel"));const s=getSelection();s.removeAllRanges();s.addRange(r);}
+  setTimeout(()=>$("copyTel").textContent="복사",1600);
+};
+render();
+
+/* Hero sparkle: a light dusting of twinkling sequins. Static when motion is reduced. */
+(function(){
+  const c=$("sparkle"),x=c.getContext("2d");
+  const still=matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let W,H,pts=[];
+  function size(){const r=c.getBoundingClientRect(),dpr=Math.min(devicePixelRatio||1,2);W=r.width;H=r.height;c.width=W*dpr;c.height=H*dpr;x.setTransform(dpr,0,0,dpr,0,0);
+    pts=Array.from({length:Math.round(W*H/9000)},()=>({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.6+.4,p:Math.random()*6.28,s:Math.random()*.02+.006}));}
+  function star(p,a){x.globalAlpha=a;x.fillStyle="#fff";x.beginPath();x.arc(p.x,p.y,p.r,0,6.28);x.fill();
+    if(p.r>1.5){x.globalAlpha=a*.6;x.fillRect(p.x-p.r*3,p.y-.3,p.r*6,.6);x.fillRect(p.x-.3,p.y-p.r*3,.6,p.r*6);}}
+  function frame(){x.clearRect(0,0,W,H);pts.forEach(p=>{p.p+=p.s;star(p,.25+.55*(.5+.5*Math.sin(p.p)));});if(!still)requestAnimationFrame(frame);}
+  size();addEventListener("resize",size);frame();
+})();
+</script>
