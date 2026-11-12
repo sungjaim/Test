@@ -1,0 +1,136 @@
+[
+  {
+    "id": 1,
+    "name": "Rosé Sequin",
+    "color": "핑크",
+    "colorHex": "#f4c2c2",
+    "size": "XS",
+    "price": 30000,
+    "status": "available",
+    "image": "",
+    "note": ""
+  },
+  {
+    "id": 2,
+    "name": "Midnight Swan",
+    "color": "네이비",
+    "colorHex": "#1c2f7a",
+    "size": "S",
+    "price": 35000,
+    "status": "available",
+    "image": "",
+    "note": ""
+  },
+  {
+    "id": 3,
+    "name": "Ice Crystal",
+    "color": "화이트",
+    "colorHex": "#f5f5f5",
+    "size": "M",
+    "price": 40000,
+    "status": "rented",
+    "image": "",
+    "note": "",
+    "availableFrom": "2026-11-20"
+  },
+  {
+    "id": 4,
+    "name": "Scarlet Bolero",
+    "color": "레드",
+    "colorHex": "#c0283c",
+    "size": "L",
+    "price": 45000,
+    "status": "available",
+    "image": "",
+    "note": ""
+  },
+  {
+    "id": 5,
+    "name": "Black Swan",
+    "color": "블랙",
+    "colorHex": "#222",
+    "size": "140",
+    "price": 30000,
+    "status": "preparing",
+    "image": "",
+    "note": ""
+  },
+  {
+    "id": 6,
+    "name": "Lilac Dream",
+    "color": "라벤더",
+    "colorHex": "#b9a6e0",
+    "size": "150",
+    "price": 35000,
+    "status": "available",
+    "image": "",
+    "note": ""
+  },
+  {
+    "id": 7,
+    "name": "Mint Sorbet",
+    "color": "민트",
+    "colorHex": "#a8dcc8",
+    "size": "160",
+    "price": 40000,
+    "status": "available",
+    "image": "",
+    "note": ""
+  },
+  {
+    "id": 8,
+    "name": "Golden Hour",
+    "color": "골드",
+    "colorHex": "#d9b44a",
+    "size": "XS",
+    "price": 45000,
+    "status": "available",
+    "image": "",
+    "note": ""
+  },
+  {
+    "id": 9,
+    "name": "Pink Champagne",
+    "color": "핑크",
+    "colorHex": "#f4c2c2",
+    "size": "S",
+    "price": 30000,
+    "status": "rented",
+    "image": "",
+    "note": "",
+    "availableFrom": "2026-11-20"
+  },
+  {
+    "id": 10,
+    "name": "Royal Navy",
+    "color": "네이비",
+    "colorHex": "#1c2f7a",
+    "size": "M",
+    "price": 35000,
+    "status": "available",
+    "image": "",
+    "note": ""
+  },
+  {
+    "id": 11,
+    "name": "Snow Queen",
+    "color": "화이트",
+    "colorHex": "#f5f5f5",
+    "size": "L",
+    "price": 40000,
+    "status": "preparing",
+    "image": "",
+    "note": ""
+  },
+  {
+    "id": 12,
+    "name": "Ruby Flame",
+    "color": "레드",
+    "colorHex": "#c0283c",
+    "size": "140",
+    "price": 45000,
+    "status": "available",
+    "image": "",
+    "note": ""
+  }
+]
